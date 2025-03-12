@@ -86,9 +86,9 @@ const postToFacebook = async (message, imageUrl = null) => {
     }
   };
 // Schedule posts at 8AM, 12PM, 4PM, 8PM daily
-cron.schedule("23 4,8,12,16,20 * * *", () => {
+cron.schedule("0 8,12,16,20 * * *", () => {
     const hour = new Date().getHours();
-    let messageIndex = [4, 8, 12, 16, 20].indexOf(hour);
+    let messageIndex = [8, 12, 16, 20].indexOf(hour);
     if (messageIndex !== -1) {
       postToFacebook(POSTS[messageIndex]?.message, POSTS[messageIndex]?.imageUrl);
     }
