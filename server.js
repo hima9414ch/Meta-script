@@ -4,7 +4,7 @@ const cron = require("node-cron");
 require("dotenv").config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 const PAGE_ID_1 = process.env.PAGE_ID_1;    // Masterclass
 const PAGE_ID_2 = process.env.PAGE_ID_2     // DIY
@@ -97,11 +97,13 @@ cron.schedule("0 8,12,16,20 * * *", () => {
   const getLatestYouTubeVideo = async () => {
     try {
       const response = await axios.get(
-        `https://www.googleapis.com/youtube/v3/search?key=${GOOGLE_CLOUD_API_KEY}&channelId=${YOUTUBE_CHANNEL_ID}&part=snippet,id&order=date&maxResults=1`
+        `https://www.googleapis.com/youtube/v3/search?key=${GOOGLE_CLOUD_API_KEY}&channelId=${YOUTUBE_CHANNEL_ID}&part=snippet,id&order=date&maxResults=100`
       );
       
       if (response.data.items.length > 0) {
-        const video = response.data.items[0];
+        const randomNumber = Math.floor(Math.random() * 100) + 1;
+        console.log('random', randomNumber)
+        const video = response.data.items[randomNumber];
         return {
           title: video.snippet.title,
           url: `https://www.youtube.com/watch?v=${video.id.videoId}`,
