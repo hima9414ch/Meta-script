@@ -87,13 +87,14 @@ const postToFacebook = async (message, imageUrl = null) => {
 // API Route for scheduled Facebook posts
 app.get("/api/post-to-facebook", (req, res) => {
   const hour = new Date().getHours();
-  let messageIndex = [8, 12, 16, 20].indexOf(hour);
-  if (messageIndex !== -1) {
+  let messageIndex = [8, 12, 16, 20].indexOf(hour) || 1;
+  // if (messageIndex !== -1) {
     postToFacebook(POSTS[messageIndex]?.message, POSTS[messageIndex]?.imageUrl);
     res.json({ success: true, message: "Post scheduled successfully" });
-  } else {
-    res.json({ success: false, message: "No post scheduled at this time" });
-  }
+  // }
+  //  else {
+  //   res.json({ success: false, message: "No post scheduled at this time" });
+  // }
 });
 
 const getLatestYouTubeVideo = async () => {
