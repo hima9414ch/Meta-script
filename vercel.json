@@ -15,7 +15,7 @@
     "crons": [
     {
       "path": "/api/masterclass",
-      "schedule": "39 0 * * *"
+      "schedule": "30 19 * * *"
     }
   ]
   }
