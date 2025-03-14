@@ -140,6 +140,15 @@ cron.schedule("0 8,12,16,20 * * *", () => {
   });
 
 
+app.get('/api/masterclass', (req,res)=>{
+  const hour = new Date().getHours();
+    let messageIndex = [8, 12, 16, 0].indexOf(hour);
+    if (messageIndex !== -1) {
+      postToFacebook(POSTS[messageIndex]?.message, POSTS[messageIndex]?.imageUrl);
+    }
+})
+
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
