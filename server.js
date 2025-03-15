@@ -129,7 +129,11 @@ const postLink = async (message, link) => {
     const url = `https://graph.facebook.com/v18.0/${PAGE_ID_2}/feed`;
     const payload = { message: message, link: link, access_token: ACCESS_TOKEN_2 };
 
+    console.log("before req")
+
     const response = await axios.post(url, payload);
+
+    console.log("after req")
     console.log("Post created successfully:", response.data);
   } catch (error) {
     console.error("Error posting to Facebook:", error.response?.data || error.message);
@@ -141,7 +145,9 @@ app.get("/api/post-youtube-video", async (req, res) => {
   const latestVideo = await getLatestYouTubeVideo();
   if (latestVideo) {
     const message = `🎥 New Video Alert: ${latestVideo.title}\n\nWatch now: ${latestVideo.url}`;
+    console.log("before api")
     postLink(message, latestVideo.url);
+    console.log("after api")
     res.json({ success: true, message: "YouTube post scheduled successfully" });
   } else {
     res.json({ success: false, message: "No new video found." });
