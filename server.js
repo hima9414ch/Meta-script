@@ -80,7 +80,7 @@ const postToFacebook = async (message, imageUrl = null) => {
 
       console.log("before req")
     const response = await axios.post(url, payload);
-    console.log("Post created successfully:", response.data);
+    console.log("Post created successfully:");
   } catch (error) {
     console.error("Error posting to Facebook:", error.response?.data || error.message);
   }
