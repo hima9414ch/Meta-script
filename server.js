@@ -78,6 +78,7 @@ const postToFacebook = async (message, imageUrl = null) => {
       ? { url: imageUrl, caption: message, access_token: ACCESS_TOKEN_1 }
       : { message: message, access_token: ACCESS_TOKEN_1 };
 
+      console.log("before req")
     const response = await axios.post(url, payload);
     console.log("Post created successfully:", response.data);
   } catch (error) {
