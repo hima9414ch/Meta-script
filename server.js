@@ -89,7 +89,12 @@ app.get("/api/post-to-facebook", (req, res) => {
   const hour = new Date().getHours();
   let messageIndex = [8, 12, 16, 20].indexOf(hour) || 1;
   // if (messageIndex !== -1) {
+    console.log(messageIndex, 'message Index')
+    
     postToFacebook(POSTS[messageIndex]?.message, POSTS[messageIndex]?.imageUrl);
+
+    console.log(messageIndex, 'after api')
+
     res.json({ success: true, message: "Post scheduled successfully" });
   // }
   //  else {
