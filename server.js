@@ -112,6 +112,7 @@ const getLatestYouTubeVideo = async () => {
     if (response.data.items.length > 0) {
       const randomNumber = Math.floor(Math.random() * 100) + 1;
       const video = response.data.items[randomNumber];
+      console.log("vedio", video)
       return {
         title: video.snippet.title,
         url: `https://www.youtube.com/watch?v=${video.id.videoId}`,
