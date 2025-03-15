@@ -89,7 +89,10 @@ const postToFacebook = async (message, imageUrl = null) => {
 // API Route for scheduled Facebook posts
 app.get("/api/post-to-facebook", (req, res) => {
   const hour = new Date().getHours();
-  let messageIndex = [2, 13, 17, 20].indexOf(hour) || (Math.floor(Math.random() * 3) + 1);
+  let messageIndex = [2, 13, 17, 20].indexOf(hour);
+  if(messageIndex == -1){
+    messageIndex = (Math.floor(Math.random() * 3) + 1)
+  }
   // if (messageIndex !== -1) {
     console.log(messageIndex, 'message Index')
 
