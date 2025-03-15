@@ -68,6 +68,7 @@ In the 19th century, teaching was one of the few professions open to women, givi
 ]
 
 const postToFacebook = async (message, imageUrl = null) => {
+  console.log("inn api", message, imageUrl)
   try {
     const url = imageUrl
       ? `https://graph.facebook.com/v22.0/${PAGE_ID_1}/photos`
@@ -90,7 +91,7 @@ app.get("/api/post-to-facebook", (req, res) => {
   let messageIndex = [8, 12, 16, 20].indexOf(hour) || 1;
   // if (messageIndex !== -1) {
     console.log(messageIndex, 'message Index')
-    
+
     postToFacebook(POSTS[messageIndex]?.message, POSTS[messageIndex]?.imageUrl);
 
     console.log(messageIndex, 'after api')
