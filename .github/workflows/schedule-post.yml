@@ -1,14 +1,1 @@
-name: Scheduled Facebook Post
 
-on:
-  schedule:
-    - cron: "20 19,12,18 * * *"  # Runs at 06:00, 12:00, and 18:00 UTC daily
-  workflow_dispatch:  # Allows manual triggering
-
-jobs:
-  post-to-facebook:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Make API request to post on Facebook
-        run: |
-          curl -X GET "https://meta-auto.onrender.com/api/post-to-facebook"
